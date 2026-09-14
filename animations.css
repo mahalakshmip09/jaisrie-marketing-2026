@@ -1,0 +1,69 @@
+/* ==========================================================================
+   ANIMATIONS.CSS — scroll reveals, keyframes, motion utilities
+   Respects prefers-reduced-motion throughout.
+   ========================================================================== */
+
+[data-reveal]{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+[data-reveal].is-revealed{opacity:1;transform:translateY(0);}
+[data-reveal="fade"]{transform:none;}
+[data-reveal="left"]{transform:translateX(-32px);}
+[data-reveal="left"].is-revealed{transform:translateX(0);}
+[data-reveal="right"]{transform:translateX(32px);}
+[data-reveal="right"].is-revealed{transform:translateX(0);}
+[data-reveal="scale"]{transform:scale(0.94);}
+[data-reveal="scale"].is-revealed{transform:scale(1);}
+
+/* stagger children via inline --delay custom property */
+[data-reveal]{transition-delay:var(--delay,0ms);}
+
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes floatY{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+@keyframes spinSlow{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+@keyframes shimmer{
+  0%{background-position:-200% 0;}
+  100%{background-position:200% 0;}
+}
+
+.hero-content{animation:fadeInUp 0.9s cubic-bezier(.4,0,.2,1) both;}
+.hero-content .hero-actions{animation:fadeInUp 0.9s cubic-bezier(.4,0,.2,1) both;animation-delay:0.15s;}
+
+.sun-divider svg .sun-ray{
+  transform-origin:60px 18px;
+  animation:spinSlow 18s linear infinite;
+}
+
+.float-y{animation:floatY 4s ease-in-out infinite;}
+
+/* Lazy image fade-in */
+img[data-src]{opacity:0;transition:opacity 0.5s ease;background:var(--c-off-white,#f2f4f3);}
+img.is-loaded{opacity:1;}
+
+/* Skeleton shimmer for counters/loading */
+.skeleton{
+  background:linear-gradient(90deg, #eef1f0 25%, #f8faf9 37%, #eef1f0 63%);
+  background-size:400% 100%;
+  animation:shimmer 1.4s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  [data-reveal]{opacity:1;transform:none;}
+}

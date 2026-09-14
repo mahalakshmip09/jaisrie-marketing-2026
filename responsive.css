@@ -1,0 +1,68 @@
+/* ==========================================================================
+   RESPONSIVE.CSS — Mobile-first breakpoint overrides
+   Breakpoints: 1200px (small desktop), 992px (tablet landscape),
+   768px (tablet portrait), 576px (mobile)
+   ========================================================================== */
+
+/* ---------- ≤1200px ---------- */
+@media (max-width:1200px){
+  :root{--container-w:960px;}
+  .grid-5{grid-template-columns:repeat(3,1fr);}
+  .process-list{grid-template-columns:repeat(3,1fr);}
+  .process-list::before{display:none;}
+  .footer-grid{grid-template-columns:1.2fr 1fr 1fr;}
+  .footer-grid .footer-col:nth-child(4){grid-column:1/-1;}
+}
+
+/* ---------- ≤992px ---------- */
+@media (max-width:992px){
+  .main-nav{display:none;}
+  .menu-toggle{display:flex;}
+  .header-actions .icon-btn--call span,
+  .header-actions .icon-btn--whatsapp span{display:none;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .grid-3{grid-template-columns:repeat(2,1fr);}
+  .stats-strip{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid .footer-col:nth-child(3),
+  .footer-grid .footer-col:nth-child(4){grid-column:span 1;}
+  .hero{min-height:78vh;}
+  .form-grid{grid-template-columns:1fr;}
+}
+
+/* ---------- ≤768px ---------- */
+@media (max-width:768px){
+  .section{padding-block:64px;}
+  .section-head{margin-bottom:36px;}
+  .grid-2{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:1fr;}
+  .grid-5{grid-template-columns:repeat(2,1fr);}
+  .process-list{grid-template-columns:1fr;gap:28px;}
+  .stats-strip{grid-template-columns:1fr 1fr;gap:16px;}
+  .stat-card{padding:20px 10px;}
+  .footer-grid{grid-template-columns:1fr;gap:32px;padding-bottom:40px;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .hero-actions,.cta-actions{flex-direction:column;width:100%;}
+  .hero-actions .btn,.cta-actions .btn{width:100%;}
+  .emergency-strip{flex-direction:column;text-align:center;}
+  .info-card{flex-direction:column;}
+  .testi-card{padding:26px;}
+  .header-inner{height:72px;}
+  :root{--header-h:72px;}
+  .float-whatsapp{width:52px;height:52px;right:16px;bottom:16px;}
+  .back-to-top{right:16px;bottom:80px;width:42px;height:42px;}
+}
+
+/* ---------- ≤576px ---------- */
+@media (max-width:576px){
+  .container{padding-inline:18px;}
+  h1{font-size:2rem;}
+  h2{font-size:1.55rem;}
+  .hero{min-height:82vh;}
+  .hero-content p{font-size:1.02rem;}
+  .grid-5{grid-template-columns:1fr 1fr;}
+  .brand-tag{display:none;}
+  .review-head{flex-wrap:wrap;}
+  .cert-item{padding:18px;}
+}
